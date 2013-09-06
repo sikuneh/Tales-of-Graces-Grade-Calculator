@@ -1,0 +1,13 @@
+Changelog 
+
+Version 1.0.3
+- Changed invalid color to gray and background to white
+- Brought the summary list closer to the table
+- Moved instance of GradeShop to the xsl page rather than the script page
+
+Version 1.0.2
+- Fixed bug that summary list would not clear when initial grade was changed
+
+Version 1.0.1
+- Items that would set the remaining grade to less than 0 now are disabled and the row is marked in red
+- Added summary of items selected

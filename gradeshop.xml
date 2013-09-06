@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="gradeshop.xsl"?>
+	<gradeshop>
+		<items>
+			<gradeshop_item id="1" name="Inherit Titles" cost="30" notes="" />
+			<gradeshop_item id="2" name="Inherit Skills" cost="2500" notes="" />
+			<gradeshop_item id="3" name="Inherit Eleth Mixer" cost="70" notes="" />
+			<gradeshop_item id="4" name="Inherit Gald" cost="270" notes="" />
+			<gradeshop_item id="5" name="Inherit Stamps" cost="30" notes="" />
+			<gradeshop_item id="6" name="Inherit Arte Usage" cost="50" notes="" />
+			<gradeshop_item id="7" name="Inherit Books" cost="10" notes="" />
+			<gradeshop_item id="8" name="Inherit Battle Items" cost="60" notes="All combat items (I.E. Hourglass)" />
+			<gradeshop_item id="9" name="Inherit Shards" cost="90" notes="" />
+			<gradeshop_item id="10" name="Inherit Herb Bonuses" cost="70" notes="" />
+			<gradeshop_item id="11" name="Triple EXP for Gald" cost="50" notes="Exchanges all of your exp for half a gald each" />
+			<gradeshop_item id="12" name="Double EXP" cost="90" notes="Stacks with 5x EXP" />
+			<gradeshop_item id="13" name="5x EXP" cost="400" notes="Stacks with Double EXP" />
+			<gradeshop_item id="14" name="Half EXP" cost="10" notes="" />
+			<gradeshop_item id="15" name="Double SP" cost="200" notes="Stacks with Triple SP" />
+			<gradeshop_item id="16" name="Triple SP" cost="1000" notes="Stacks with Double SP" />
+			<gradeshop_item id="17" name="Mastery Bonus" cost="20" notes="Doubles SP for titles mastered before" />
+			<gradeshop_item id="18" name="Double Item Drops" cost="120" notes="" />
+			<gradeshop_item id="19" name="Dualize Discount" cost="100" notes="Reduces dualizing to 25% cost. Effects stamp get" />
+			<gradeshop_item id="20" name="Upgrade Eleth Mixer" cost="50" notes="Increases odds Eleth Mixer makes consumables" />
+			<gradeshop_item id="21" name="Expand Inventory" cost="100" notes="Hold 30 of each item" />
+			<gradeshop_item id="22" name="Maximum Speed" cost="50" notes="Drastically increases field walking speed" />
+			<gradeshop_item id="23" name="Chain Capacity +1" cost="30" notes="" />
+			<gradeshop_item id="24" name="Chain Capacity +2" cost="250" notes="" />
+			<gradeshop_item id="25" name="Double Critical" cost="30" notes="Doubles critical for all" />
+			<gradeshop_item id="26" name="Double Damage" cost="30" notes="Doubles damage for all" />
+			<gradeshop_item id="27" name="5x Damage" cost="150" notes="5x damage for all" />
+			<gradeshop_item id="28" name="Double Gald" cost="70" notes="" />
+			<gradeshop_item id="29" name="Unlock Qualities" cost="50" descroption="" />
+			<gradeshop_item id="30" name="Maximum Eleth +500" cost="100" notes="" />
+			<gradeshop_item id="31" name="Maximum HP +1000" cost="150" notes="" />
+			<gradeshop_item id="32" name="Skip Childhood" cost="10" notes="" />
+			<gradeshop_item id="33" name="Inherit Magic Carta Cards" cost="200" notes="" />
+		</items>
+	</gradeshop>
