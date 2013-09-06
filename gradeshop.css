@@ -29,7 +29,7 @@ h2
 {
 	float:						left;
 	padding:					0;
-	width:						760px;
+	width:						575pt;
 }
 
 #summary h3
@@ -88,9 +88,9 @@ h2
 	float:						left;
 	margin-left:				2px;
 	min-height:					20px;
-	padding:					0 4px;
+	padding:					0;
 	text-align:					center;
-	width:						446px;
+	width:						460px;
 }
 
 #gradeshop_list_header
@@ -115,6 +115,12 @@ label
 	margin-top:					30px;
 	text-align:					center;
 	width:						100%;
+}
+
+#summary
+{
+	float:						left;
+	width:						300px;
 }
 
 #summary_list

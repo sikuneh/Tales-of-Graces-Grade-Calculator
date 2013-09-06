@@ -1,13 +1,20 @@
 Changelog 
 
-Version 1.0.3
+Version 1.0.5 | 09/06/13
+- Cleaned up code a lot
+- Fixed highlighted item overlapping with rightmost border
+
+Version 1.0.4 | 09/05/13
+- Set all items to load disabled (which will be clickable when keyup on initial grade or onblur initial grade)
+
+Version 1.0.3 | 09/05/13
 - Changed invalid color to gray and background to white
 - Brought the summary list closer to the table
 - Moved instance of GradeShop to the xsl page rather than the script page
 
-Version 1.0.2
+Version 1.0.2 | 09/04/13
 - Fixed bug that summary list would not clear when initial grade was changed
 
-Version 1.0.1
+Version 1.0.1 | 09/04/13
 - Items that would set the remaining grade to less than 0 now are disabled and the row is marked in red
 - Added summary of items selected

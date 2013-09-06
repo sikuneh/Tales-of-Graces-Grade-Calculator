@@ -8,7 +8,7 @@
 			<gradeshop_item id="4" name="Inherit Gald" cost="270" notes="" />
 			<gradeshop_item id="5" name="Inherit Stamps" cost="30" notes="" />
 			<gradeshop_item id="6" name="Inherit Arte Usage" cost="50" notes="" />
-			<gradeshop_item id="7" name="Inherit Books" cost="10" notes="" />
+			<gradeshop_item id="7" name="Inherit Books" cost="10" notes="Mixer books plus discovery/enemy/item books" />
 			<gradeshop_item id="8" name="Inherit Battle Items" cost="60" notes="All combat items (I.E. Hourglass)" />
 			<gradeshop_item id="9" name="Inherit Shards" cost="90" notes="" />
 			<gradeshop_item id="10" name="Inherit Herb Bonuses" cost="70" notes="" />

@@ -18,7 +18,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<h2>Tales of Graces f Grade Calculator</h2>
 			<div id="setup">
 				<div id="setup_left">
-					<p><label>Initial Grade:</label> <input type="text" name="initial_grade" id="initial_grade" value="0" onkeyup="grade_shop.setInitialGrade(this.value); resetChecks();" onblur="grade_shop.setInitialGrade(this.value);" /></p>
+					<p><label>Initial Grade:</label> <input type="text" name="initial_grade" id="initial_grade" value="0" onkeyup="grade_shop.setInitialGrade(this.value); resetChecks();" onblur="grade_shop = new GradeShop(); grade_shop.setInitialGrade(this.value);" /></p>
 				</div>
 				<div id="setup_right">
 					<p><label>Remaining Grade:</label> <input type="text" name="remaining_grade" id="remaining_grade" value="0" readonly="true" /></p>
@@ -33,7 +33,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</div>
 				<xsl:for-each select="gradeshop/items/gradeshop_item">
 					<div class="gradeshop_item">
-						<div class="gradeshop_checkbox"><input type="checkbox" onchange="grade_shop.calculateGrade(this.parentNode.parentNode);" /></div>
+						<div class="gradeshop_checkbox"><input type="checkbox" onchange="grade_shop.calculateGrade(this.parentNode.parentNode);" disabled="true" /></div>
 						<div class="gradeshop_name"><xsl:value-of select="@name" /></div>
 						<div class="gradeshop_cost"><xsl:value-of select="@cost" /></div>
 						<div class="gradeshop_description"><xsl:value-of select="@notes" /></div>
