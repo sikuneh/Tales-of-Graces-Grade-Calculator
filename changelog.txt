@@ -1,5 +1,9 @@
 Changelog 
 
+Version 1.0.6 | 09/06/13
+- Changed how the bonus list is handled in javascript page. It is now an array of JSON objects with a switch on or off to keep
+  track of each bonus
+
 Version 1.0.5 | 09/06/13
 - Cleaned up code a lot
 - Fixed highlighted item overlapping with rightmost border

@@ -46,8 +46,42 @@ var GradeShop = function()
 {
 	// Data members
 	var initial_grade = 0,
-		remaining_grade = 0,
-		list_of_bonuses = Array();
+		remaining_grade = 0;
+	var	list_of_bonuses = [
+			{"item_name" : "Inherit Titles", "mode" : false},
+			{"item_name" : "Inherit Skills", "mode" : false},
+			{"item_name" : "Inherit Eleth Mixer", "mode" : false},
+			{"item_name" : "Inherit Gald", "mode" : false},
+			{"item_name" : "Inherit Stamps", "mode" : false},
+			{"item_name" : "Inherit Arte Usage", "mode" : false},
+			{"item_name" : "Inherit Books", "mode" : false},
+			{"item_name" : "Inherit Battle Items", "mode" : false},
+			{"item_name" : "Inherit Shards", "mode" : false},
+			{"item_name" : "Inherit Herb Bonuses", "mode" : false},
+			{"item_name" : "Triple EXP for Gald", "mode" : false},
+			{"item_name" : "Double EXP", "mode" : false},
+			{"item_name" : "5x EXP", "mode" : false},
+			{"item_name" : "Half EXP", "mode" : false},
+			{"item_name" : "Double SP", "mode" : false},
+			{"item_name" : "Triple SP", "mode" : false},
+			{"item_name" : "Mastery Bonus", "mode" : false},
+			{"item_name" : "Double Item Drops", "mode" : false},
+			{"item_name" : "Dualize Discount", "mode" : false},
+			{"item_name" : "Upgrade Eleth Mixer", "mode" : false},
+			{"item_name" : "Expand Inventory", "mode" : false},
+			{"item_name" : "Movement Speed", "mode" : false},
+			{"item_name" : "Chain Capacity +1", "mode" : false},
+			{"item_name" : "Chain Capacity +2", "mode" : false},
+			{"item_name" : "Double Critical", "mode" : false},
+			{"item_name" : "Double Damage", "mode" : false},
+			{"item_name" : "5x Damage", "mode" : false},
+			{"item_name" : "Double Gald", "mode" : false},
+			{"item_name" : "Unlock Qualities", "mode" : false},
+			{"item_name" : "Maximum Eleth +500", "mode" : false},
+			{"item_name" : "Maximum HP +1000", "mode" : false},
+			{"item_name" : "Skip Childhood", "mode" : false},
+			{"item_name" : "Inherit Magic Carta Cards", "mode" : false}
+		];
 	
 	//----------------------------------------------------------------------------
 	//	Name:			setInitialGrade
@@ -89,16 +123,20 @@ var GradeShop = function()
 	//----------------------------------------------------------------------------
 	this.setInitialGrade = function(temp_initial_grade)
 	{
+		var i = 0;
+		if (document.getElementById("initial_grade").length == 0)
+			temp_initial_grade = 0;
 		initial_grade = parseInt(temp_initial_grade);
 		remaining_grade = parseInt(temp_initial_grade);
 		
 		document.getElementById("summary_list").innerHTML = "";
 		
+		for (i = 0; i < list_of_bonuses.length; i++)
+			list_of_bonuses[i].mode = false;
+		
 		displayRemainingGrade();
 		disableInvalidRows();
 		resetChecks();
-		
-		list_of_bonuses.length = 0;
 	}
 	
 	//----------------------------------------------------------------------------
@@ -163,7 +201,7 @@ var GradeShop = function()
 			{
 				remaining_grade -= item_cost;
 				row.className = "gradeshop_item selected";
-				list_of_bonuses.push(item_name);
+				addToBonuses(item_name);
 			}
 		}
 		else
@@ -177,6 +215,18 @@ var GradeShop = function()
 		updateSummary();
 	}
 	
+	function addToBonuses(item_name)
+	{
+		var i = 0;
+
+		for (i = 0; i < list_of_bonuses.length; i++)
+		{
+			if (list_of_bonuses[i].item_name == item_name)
+			{
+				list_of_bonuses[i].mode = true;
+			}
+		}
+	}
 	//----------------------------------------------------------------------------
 	//	Name:			removeFromBonuses
 	//
@@ -208,10 +258,13 @@ var GradeShop = function()
 	//
 	//	History Log:	09/06/13 NW First iteration
 	//----------------------------------------------------------------------------
-	var removeFromBonuses = function(name)
+	var removeFromBonuses = function(item_name)
 	{
-		var item_index = list_of_bonuses.indexOf(name);
-		list_of_bonuses.splice(item_index, 1);
+		for (i = 0; i < list_of_bonuses.length; i++)
+		{
+			if (list_of_bonuses[i].item_name == item_name)
+				list_of_bonuses[i].mode = false;
+		}
 	}
 	
 	//----------------------------------------------------------------------------
@@ -299,7 +352,10 @@ var GradeShop = function()
 		summary_list.innerHTML = "";
 		
 		for (i = 0; i < list_of_bonuses.length; i++)
-			summary_list.innerHTML += "<li>" + list_of_bonuses[i] + "</li>";
+		{
+			if (list_of_bonuses[i].mode == true)
+				summary_list.innerHTML += "<li>" + list_of_bonuses[i].item_name + "</li>";
+		}
 	}
 	
 	//----------------------------------------------------------------------------
