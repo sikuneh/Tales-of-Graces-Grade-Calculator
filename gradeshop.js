@@ -20,6 +20,42 @@ const COST_EL_INDEX = 2;
 const DESC_EL_INDEX = 3;
 
 //----------------------------------------------------------------------------
+//	Title:			GradeItem
+//
+//	Author:			Nick Williams
+//
+//	Description:	The GradeItem class definition
+//
+//	Date:			09/07/13
+//
+//	Date Modified:
+//
+//	Methods:		getName
+//					getMode
+//					switchMode
+//
+//	Data Members:	initialGrade
+//					remaining_grade
+//					list_of_bonuses
+//----------------------------------------------------------------------------
+var GradeItem = function(name, mode)
+{	
+	var item_name,
+		item_mode;
+	
+	item_name = name;
+	item_mode = typeof mode !== 'undefined' ? mode : false;
+	
+	this.getName = function() { return item_name; }
+	this.getMode = function() { return item_mode; }
+	
+	this.switchMode = function(hardSwitch) 
+	{ 
+		item_mode = typeof hardSwitch !== 'undefined' ? hardSwitch : !item_mode;
+	}
+}
+
+//----------------------------------------------------------------------------
 //	Title:			GradeShop
 //
 //	Author:			Nick Williams
@@ -28,7 +64,7 @@ const DESC_EL_INDEX = 3;
 //
 //	Date:			09/05/13
 //
-//	Date Modified:	09/06/13
+//	Date Modified:	09/07/13
 //
 //	Methods:		setInitialGrade
 //					calculateGrade
@@ -48,39 +84,38 @@ var GradeShop = function()
 	var initial_grade = 0,
 		remaining_grade = 0;
 	var	list_of_bonuses = [
-			{"item_name" : "Inherit Titles", "mode" : false},
-			{"item_name" : "Inherit Skills", "mode" : false},
-			{"item_name" : "Inherit Eleth Mixer", "mode" : false},
-			{"item_name" : "Inherit Gald", "mode" : false},
-			{"item_name" : "Inherit Stamps", "mode" : false},
-			{"item_name" : "Inherit Arte Usage", "mode" : false},
-			{"item_name" : "Inherit Books", "mode" : false},
-			{"item_name" : "Inherit Battle Items", "mode" : false},
-			{"item_name" : "Inherit Shards", "mode" : false},
-			{"item_name" : "Inherit Herb Bonuses", "mode" : false},
-			{"item_name" : "Triple EXP for Gald", "mode" : false},
-			{"item_name" : "Double EXP", "mode" : false},
-			{"item_name" : "5x EXP", "mode" : false},
-			{"item_name" : "Half EXP", "mode" : false},
-			{"item_name" : "Double SP", "mode" : false},
-			{"item_name" : "Triple SP", "mode" : false},
-			{"item_name" : "Mastery Bonus", "mode" : false},
-			{"item_name" : "Double Item Drops", "mode" : false},
-			{"item_name" : "Dualize Discount", "mode" : false},
-			{"item_name" : "Upgrade Eleth Mixer", "mode" : false},
-			{"item_name" : "Expand Inventory", "mode" : false},
-			{"item_name" : "Movement Speed", "mode" : false},
-			{"item_name" : "Chain Capacity +1", "mode" : false},
-			{"item_name" : "Chain Capacity +2", "mode" : false},
-			{"item_name" : "Double Critical", "mode" : false},
-			{"item_name" : "Double Damage", "mode" : false},
-			{"item_name" : "5x Damage", "mode" : false},
-			{"item_name" : "Double Gald", "mode" : false},
-			{"item_name" : "Unlock Qualities", "mode" : false},
-			{"item_name" : "Maximum Eleth +500", "mode" : false},
-			{"item_name" : "Maximum HP +1000", "mode" : false},
-			{"item_name" : "Skip Childhood", "mode" : false},
-			{"item_name" : "Inherit Magic Carta Cards", "mode" : false}
+			new GradeItem("Inherit Titles"),
+			new GradeItem("Inherit Skills"),
+			new GradeItem("Inherit Eleth Mixer"),
+			new GradeItem("Inherit Gald"),
+			new GradeItem("Inherit Stamps"),
+			new GradeItem("Inherit Arte Usage"),
+			new GradeItem("Inherit Books"),
+			new GradeItem("Inherit Shards"),
+			new GradeItem("Inherit Herb Bonuses"),
+			new GradeItem("Triple EXP for Gald"),
+			new GradeItem("Double EXP"),
+			new GradeItem("5x EXP"),
+			new GradeItem("Half EXP"),
+			new GradeItem("Double SP"),
+			new GradeItem("Triple SP"),
+			new GradeItem("Mastery Bonus"),
+			new GradeItem("Double Item Drops"),
+			new GradeItem("Dualize Discount"),
+			new GradeItem("Upgrade Eleth Mixer"),
+			new GradeItem("Expand Inventory"),
+			new GradeItem("Movement Speed"),
+			new GradeItem("Chain Capacity +1"),
+			new GradeItem("Chain Capacity +2"),
+			new GradeItem("Double Critical"),
+			new GradeItem("Double Damage"),
+			new GradeItem("5x Damage"),
+			new GradeItem("Double Gald"),
+			new GradeItem("Unlock Qualities"),
+			new GradeItem("Maximum Eleth +500"),
+			new GradeItem("Maximum HP +1000"),
+			new GradeItem("Skip Childhood"),
+			new GradeItem("Inherit Magic Carta Cards")
 		];
 	
 	//----------------------------------------------------------------------------
@@ -120,6 +155,7 @@ var GradeShop = function()
 	//
 	//	History Log:	09/05/13 NW First iteration
 	//					09/06/13 NW Several fixes
+	//					09/07/13 NW Adapted list_of_bonuses loop to incorporate the new GradeItem class
 	//----------------------------------------------------------------------------
 	this.setInitialGrade = function(temp_initial_grade)
 	{
@@ -132,7 +168,7 @@ var GradeShop = function()
 		document.getElementById("summary_list").innerHTML = "";
 		
 		for (i = 0; i < list_of_bonuses.length; i++)
-			list_of_bonuses[i].mode = false;
+			list_of_bonuses[i].switchMode(false);
 		
 		displayRemainingGrade();
 		disableInvalidRows();
@@ -215,15 +251,47 @@ var GradeShop = function()
 		updateSummary();
 	}
 	
+	//----------------------------------------------------------------------------
+	//	Name:			addToBonuses
+	//
+	//	Title:			Add item to bonuses list
+	//
+	//	Description:	Loops through each item to check for the supplied name and
+	//					switch that one on;
+	//
+	//	Programmer:		Nick Williams
+	//
+	//	Date:			09/05/13
+	//
+	//	Version:		1.0
+	//
+	//	Environment:	Hardware: Dell Studio 1747 Laptop
+	//					Software: Microsoft Windows 7 Ultimate SP1
+	//	
+	//	Input:			item name
+	//	
+	//	Output:			Removes item from list_of_bonuses
+	//
+	//	Called By:		calculateGrade
+	//
+	//	Calls:			N/A
+	//
+	//	Parameters:		name: the name of a gradeshop_item
+	//
+	//	Returns:		None
+	//
+	//	History Log:	09/06/13 NW First iteration
+	//----------------------------------------------------------------------------
 	function addToBonuses(item_name)
 	{
 		var i = 0;
-
+		
 		for (i = 0; i < list_of_bonuses.length; i++)
 		{
-			if (list_of_bonuses[i].item_name == item_name)
+			if (list_of_bonuses[i].getName() == item_name)
 			{
-				list_of_bonuses[i].mode = true;
+				list_of_bonuses[i].switchMode();
+				break;
 			}
 		}
 	}
@@ -257,13 +325,17 @@ var GradeShop = function()
 	//	Returns:		None
 	//
 	//	History Log:	09/06/13 NW First iteration
+	//					09/07/13 NW Added break to optimize loop
 	//----------------------------------------------------------------------------
 	var removeFromBonuses = function(item_name)
 	{
 		for (i = 0; i < list_of_bonuses.length; i++)
 		{
-			if (list_of_bonuses[i].item_name == item_name)
-				list_of_bonuses[i].mode = false;
+			if (list_of_bonuses[i].getName() == item_name)
+			{
+				list_of_bonuses[i].switchMode();
+				break;
+			}
 		}
 	}
 	
@@ -343,6 +415,7 @@ var GradeShop = function()
 	//	History Log:	09/05/13 NW First iteration
 	//					09/06/13 NW Several fixes
 	//					09/06/13 NW Cleaned up code
+	//					09/07/13 NW Adapted new list_of_bonuses 
 	//----------------------------------------------------------------------------
 	var updateSummary = function()
 	{
@@ -353,8 +426,8 @@ var GradeShop = function()
 		
 		for (i = 0; i < list_of_bonuses.length; i++)
 		{
-			if (list_of_bonuses[i].mode == true)
-				summary_list.innerHTML += "<li>" + list_of_bonuses[i].item_name + "</li>";
+			if (list_of_bonuses[i].getMode() == true)
+				summary_list.innerHTML += "<li>" + list_of_bonuses[i].getName() + "</li>";
 		}
 	}
 	
